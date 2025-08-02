@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import dj_database_url, os
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'blog',
     # "crispy_forms",
     # "crispy_bootstrap5",  
+
+     # allauth apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -83,9 +89,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True) # This was for deployment
     }
 }
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #FOR DEPLOY
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -133,8 +141,18 @@ LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_URL = '/accounts/login/'  # Default login URL
 
+#for google_auth
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
-# settings.py
+
+# SMTP 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

@@ -19,7 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('blog.urls')), # This includes all blog URLs including authentication
+    path('', include('blog.urls')), 
+    path('accounts/', include('allauth.urls')), # This includes all blog URLs including authentication
     path('admin/', admin.site.urls),
       
 ]

@@ -1,0 +1,128 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Contact - BlogNest{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold mb-4">Get In Touch</h1>
+                <p class="lead">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <!-- Messages (success/error) -->
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            <!-- Contact Form -->
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body p-5">
+                                            <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.first_name.id_for_label }}" class="form-label">First name</label>
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                                <div class="invalid-feedback d-block">{{ form.first_name.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.last_name.id_for_label }}" class="form-label">Last name</label>
+                            {{ form.last_name }}
+                            {% if form.last_name.errors %}
+                                <div class="invalid-feedback d-block">{{ form.last_name.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email address</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">{{ form.email.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject</label>
+                        {{ form.subject }}
+                        {% if form.subject.errors %}
+                            <div class="invalid-feedback d-block">{{ form.subject.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4">
+                        <label for="{{ form.message.id_for_label }}" class="form-label">Message</label>
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <div class="invalid-feedback d-block">{{ form.message.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary-custom btn-lg">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </div>
+                </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact/Social Info Row -->
+            <div class="row mt-5">
+                <!-- Email -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="p-4">
+                        <i class="fas fa-envelope text-success fa-3x mb-3"></i>
+                        <h5>Email Us</h5>
+                        <p class="mb-0">
+                            <a href="https://mail.google.com/mail/?view=cm&to=divi44246@gmail.com&su=Contact%20from%20BlogNest"
+                            target="_blank"
+                            rel="noopener"
+                            class="text-muted text-decoration-none"
+                            style="color:#6c757d !important;">
+                                divi44246@gmail.com
+                            </a>
+
+                        </p>
+                    </div>
+                </div>
+                <!-- LinkedIn -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="p-4">
+                        <i class="fab fa-linkedin text-success fa-3x mb-3"></i>
+                        <h5>LinkedIn</h5>
+                        <p class="mb-0">
+                            <a href="https://www.linkedin.com/in/divya-pal22/" class="text-muted text-decoration-none" target="_blank" rel="noopener" style="color:#6c757d !important;">
+                                Divya P
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- X (formerly Twitter) -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="p-4">
+                        <i class="fab fa-twitter text-success fa-3x mb-3"></i>
+                        <h5>X (formerly Twitter)</h5>
+                        <p class="mb-0">
+                            <a href="https://x.com/_divi_xoxo" class="text-muted text-decoration-none" target="_blank" rel="noopener" style="color:#6c757d !important;">
+                                @_divi_xoxo
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

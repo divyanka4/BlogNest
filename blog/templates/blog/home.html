@@ -1,0 +1,117 @@
+
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Welcome to BlogNest{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4" style="color: var(--dark-text);">
+                    Human stories & ideas
+                </h1>
+                <p class="lead mb-4" style="color: var(--light-text);">
+                    A place to read, write, and deepen your understanding. Share your thoughts and connect with like-minded people.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{% url 'post_list' %}" class="btn btn-primary-custom btn-lg">
+                        <i class="fas fa-book-open me-2"></i>Start Reading
+                    </a>
+                    {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-custom btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Join Us
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="position-relative">
+                    <img src="{% static 'blog/BlogImg.jpg' %}" alt="BlogNest Cover" class="img-fluid rounded shadow mb-4" style="max-width: 100%; height: auto;"> 
+               </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Posts Section -->
+{% if recent_posts %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Latest Stories</h2>
+        <div class="row">
+            {% for post in recent_posts %}
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-muted">{{ post.content|truncatewords:20 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{ post.published_date|date:"M d, Y" }}</small>
+                            <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-custom btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'post_list' %}" class="btn btn-primary-custom">View All Posts</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Features Section (Optional Enhancement) -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-pen-fancy fa-3x text-success mb-3"></i>
+                    <h4 class="fw-bold">Write Stories</h4>
+                    <p class="text-muted">Share your thoughts, experiences, and ideas with our community of writers and readers.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-users fa-3x text-success mb-3"></i>
+                    <h4 class="fw-bold">Connect</h4>
+                    <p class="text-muted">Engage with like-minded individuals and build meaningful connections through shared stories.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-search fa-3x text-success mb-3"></i>
+                    <h4 class="fw-bold">Discover</h4>
+                    <p class="text-muted">Explore a wide range of topics and discover new perspectives from our diverse community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+{% if not user.is_authenticated %}
+<section class="py-5" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-green) 100%);">
+    <div class="container text-center text-white">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4">Ready to Share Your Story?</h2>
+                <p class="lead mb-4">Join thousands of writers who are already sharing their experiences and connecting with readers worldwide.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{% url 'signup' %}" class="btn btn-light btn-lg">
+                        <i class="fas fa-user-plus me-2"></i>Get Started for Free
+                    </a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{% if form.instance.pk %}Edit Post{% else %}Create New Post{% endif %} - BlogNest{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold mb-3">
+                    {% if form.instance.pk %}
+                        <i class="fas fa-edit me-3 text-success"></i>Edit Post
+                    {% else %}
+                        <i class="fas fa-pen me-3 text-success"></i>Create New Post
+                    {% endif %}
+                </h1>
+                <p class="lead text-muted">
+                    {% if form.instance.pk %}
+                        Update your story and share your thoughts
+                    {% else %}
+                        Share your story with the world
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Form Card -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <form method="post" id="postForm">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+
+                        <!-- Title Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">
+                                <i class="fas fa-heading me-2 text-success"></i>Post Title
+                            </label>
+                            <input type="text" 
+                                   class="form-control form-control-lg {% if form.title.errors %}is-invalid{% endif %}" 
+                                   name="{{ form.title.name }}" 
+                                   id="{{ form.title.id_for_label }}"
+                                   value="{{ form.title.value|default:'' }}"
+                                   placeholder="Enter an engaging title for your post..."
+                                   required>
+                            {% if form.title.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.title.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Content Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.content.id_for_label }}" class="form-label fw-semibold">
+                                <i class="fas fa-align-left me-2 text-success"></i>Content
+                            </label>
+                            <textarea class="form-control {% if form.content.errors %}is-invalid{% endif %}" 
+                                      name="{{ form.content.name }}" 
+                                      id="{{ form.content.id_for_label }}"
+                                      rows="12" 
+                                      placeholder="Tell your story... Share your thoughts, experiences, and ideas here."
+                                      required>{{ form.content.value|default:'' }}</textarea>
+                            {% if form.content.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.content.errors.0 }}
+                                </div>
+                            {% endif %}
+                            <div class="form-text">
+                                <i class="fas fa-lightbulb me-1"></i>
+                                Tip: Write clearly and engagingly to connect with your readers
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-3 justify-content-between flex-wrap">
+                            <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Posts
+                            </a>
+                            
+                            <div class="d-flex gap-2">
+                                {% if form.instance.pk %}
+                                <a href="{% url 'post_detail' pk=form.instance.pk %}" class="btn btn-outline-primary">
+                                    <i class="fas fa-eye me-2"></i>Preview
+                                </a>
+                                {% endif %}
+                                <button type="submit" class="btn btn-primary-custom btn-lg">
+                                    <i class="fas fa-save me-2"></i>
+                                    {% if form.instance.pk %}Update Post{% else %}Publish Post{% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Writing Tips -->
+            <div class="mt-4">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3">
+                            <i class="fas fa-pen-fancy me-2 text-success"></i>Writing Tips
+                        </h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Use a compelling title</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Start with a hook</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Keep paragraphs short</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>End with impact</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Character Counter Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const titleInput = document.querySelector('input[name="title"]');
+    const contentTextarea = document.querySelector('textarea[name="content"]');
+    
+    // Auto-resize textarea
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    
+    contentTextarea.addEventListener('input', function() {
+        autoResize(this);
+    });
+    
+    // Initial resize
+    autoResize(contentTextarea);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}All Posts - BlogNest{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold mb-3">All Blog Posts</h1>
+        <p class="lead text-muted">Discover stories, ideas, and insights from our community</p>
+    </div>
+    
+    <!-- ADDED: Search Results Info -->
+    {% if request.GET.q %}
+    <div class="alert alert-info">
+        <i class="fas fa-search me-2"></i>
+        Showing results for "<strong>{{ request.GET.q }}</strong>"
+        <a href="{% url 'post_list' %}" class="ms-3 text-decoration-none">Clear search</a>
+    </div>
+    {% endif %}
+  
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'post_detail' pk=post.pk %}" class="text-decoration-none text-dark">
+                            {{ post.title }}
+                        </a>
+                    </h5>
+                    <p class="card-text text-muted">{{ post.content|truncatewords:20 }}</p>
+                    <small class="d-block mb-4">
+                        {{ post.published_date|date:"M d, Y" }} | by {{ post.author }}
+                    </small>
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-outline-custom btn-sm">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p>No posts available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

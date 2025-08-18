@@ -1,0 +1,128 @@
+[
+{
+  "model": "blog.post",
+  "pk": 1,
+  "fields": {
+    "title": "About Myself",
+    "content": "HI! I am Divyankaa, a fourth year CS engineering grad from Bhilwara Rajasthan. I like journaling. You can try it too.",
+    "author": "D",
+    "published_date": "2025-08-01T11:58:57Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 2,
+  "fields": {
+    "title": "My First Django Project",
+    "content": "Navigating the world of Django for the first time was both exciting and challenging. Setting up the project, configuring apps, and finally seeing my first \"Hello, World!\" page gave me tremendous satisfaction. This post details the steps I took, resources that helped, and lessons learned along the way.",
+    "author": "divya",
+    "published_date": "2025-08-01T13:39:25.706Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 3,
+  "fields": {
+    "title": "Why I Chose Python",
+    "content": "Python's readability, versatility, and vast ecosystem made it my top choice for web and software development. From web apps to automation scripts, Python's approachable syntax has accelerated my programming journey and made learning new concepts much easier.",
+    "author": "divya",
+    "published_date": "2025-08-01T13:39:25.724Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 5,
+  "fields": {
+    "title": "Overcoming Errors: Debugging in Django",
+    "content": "Facing bugs is inevitable in coding, but Django provides excellent tools for debugging and troubleshooting. In this post, I highlight common errors I've faced and share the strategies and resources that helped me debug and resolve them efficiently.",
+    "author": "divya",
+    "published_date": "2025-08-01T13:39:25.739Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 12,
+  "fields": {
+    "title": "How I Organize My Coding Projects",
+    "content": "Keeping projects organized is essential for productivity and scalability. I use version control, systematic folder structures, and clear documentation. This habit has improved my workflow and made it easier to revisit and maintain my projects in the long term.",
+    "author": "divya",
+    "published_date": "2025-08-02T10:08:52.761Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 18,
+  "fields": {
+    "title": "Why I Can't Stop Binging Anime: My Favorite Must-Watch 'Naruto'",
+    "content": "Anime has always been a huge part of my life, and there's one show that stands out above all: 'Naruto'. It's a story of perseverance, friendship, and growth that resonates deeply. From epic battles to heartfelt moments, Naruto's characters and world have inspired me in so many ways. Whether I'm relaxing after a long day or seeking motivation, returning to Naruto is always comforting and energizing.",
+    "author": "divya",
+    "published_date": "2025-08-02T10:09:54.242Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 19,
+  "fields": {
+    "title": "Why I'm Team Twitter: The Power of a United Community",
+    "content": "I really like Twitter because unlike other platforms, it's a place where the whole community can come together, whether to support a cause or push against something collectively. This collective energy, despite disagreements, creates a dynamic and vibrant environment that I find fascinating. It's this communal spirit that keeps me coming back and engaging actively on Twitter.",
+    "author": "divya",
+    "published_date": "2025-08-02T10:09:54.246Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 20,
+  "fields": {
+    "title": "The Power of Memes: Why Humor Makes Life Easier",
+    "content": "Memes and humor are essential to me. In a world that can be stressful, memes offer a quick breath of fresh air and connection. They make difficult days lighter and help people bond across distances. I believe that humor humanizes us and brings a sense of community that is truly invaluable. Keeping laughter alive through memes has been a personal remedy for me.",
+    "author": "divya",
+    "published_date": "2025-08-02T10:09:54.250Z"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 21,
+  "fields": {
+    "title": "My Tech Gadget Journey: From Basics to Must-Haves",
+    "content": "Technology is constantly evolving, and so has my collection of gadgets. Starting with just the basics, I have gradually added tools that boost my productivity and enjoyment. From a reliable laptop to noise-cancelling headphones, these gadgets shape how I work and relax. Finding the right tech essentials is all about understanding your needs and staying curious.",
+    "author": "divya",
+    "published_date": "2025-08-02T10:09:54.253Z"
+  }
+},
+{
+  "model": "blog.contactmessage",
+  "pk": 1,
+  "fields": {
+    "first_name": "Divya",
+    "last_name": "pal",
+    "email": "divi44246@gmail.com",
+    "subject": "abc",
+    "message": "abcd",
+    "submitted_at": "2025-08-02T06:56:02.115Z"
+  }
+},
+{
+  "model": "blog.contactmessage",
+  "pk": 2,
+  "fields": {
+    "first_name": "D",
+    "last_name": "P",
+    "email": "abcgv@gmail.com",
+    "subject": "ajbdwei",
+    "message": "jcjhhlwiaegrer",
+    "submitted_at": "2025-08-02T07:00:45.956Z"
+  }
+},
+{
+  "model": "blog.contactmessage",
+  "pk": 3,
+  "fields": {
+    "first_name": "abxj",
+    "last_name": "jdcb",
+    "email": "jbdkja@gmail.com",
+    "subject": "djbdjb",
+    "message": "jdcbi",
+    "submitted_at": "2025-08-02T07:27:57.285Z"
+  }
+}
+]

@@ -30,7 +30,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'blognest-vhol.onrender.com',
-   '127.0.0.1'
+    '127.0.0.1',
     'localhost'
 ]
 

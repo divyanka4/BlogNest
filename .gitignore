@@ -12,7 +12,7 @@ env/
 ENV/
 .venv/
 
-# Environment variables (see step 3)
+# Environment variables
 .env
 
 # Static/media

@@ -1,0 +1,128 @@
+[
+{
+"model": "auth.user",
+"pk": 1,
+"fields": {
+"password": "pbkdf2_sha256$1000000$E437wQwlKHQFH3KKbI8fEg$hDCk4GIzEuLIe9m/qAJk/wIjGsuWD78b/f4dFwLPnaE=",
+"last_login": "2025-08-06T18:04:21.319Z",
+"is_superuser": true,
+"username": "divya",
+"first_name": "Divya",
+"last_name": "pal",
+"email": "divi44246@gmail.com",
+"is_staff": true,
+"is_active": true,
+"date_joined": "2025-08-01T07:35:25.720Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 2,
+"fields": {
+"password": "pbkdf2_sha256$1000000$yyhehtgxfVRo2E921zTBv3$73K8ZoI3cgtMy97Z59ejYltaWdGuxY+Qvo2UD4RYY5w=",
+"last_login": "2025-08-01T11:56:41.930Z",
+"is_superuser": false,
+"username": "divyanka",
+"first_name": "",
+"last_name": "",
+"email": "xolovo8380@rabitex.com",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-01T11:56:40.708Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 3,
+"fields": {
+"password": "pbkdf2_sha256$1000000$OSEeP2W6Tks2JlzLjoUBtf$AmgW9EFKYhUcE9izkJ9L45bLUVjqOya0+HbDXr3jflI=",
+"last_login": "2025-08-01T11:57:33.989Z",
+"is_superuser": false,
+"username": "divyankaa",
+"first_name": "",
+"last_name": "",
+"email": "xolovo8380@rabitex.com",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-01T11:57:32.790Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 4,
+"fields": {
+"password": "pbkdf2_sha256$1000000$SmK4VDS1R8MiOxgPpImsOV$6S2u7ULBvHccgbMAYjomoybnemgnsZnlSkdaID1nEtU=",
+"last_login": "2025-08-01T16:48:52.158Z",
+"is_superuser": false,
+"username": "AB",
+"first_name": "A",
+"last_name": "B",
+"email": "wamib74908@rabitex.com",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-01T12:11:32.847Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 5,
+"fields": {
+"password": "pbkdf2_sha256$1000000$Gbs0D7BECGuIRUj8eUZqHr$yB2sDRQ2eI/OLeLjxCYXmC5Bb4nangb71sZk/UdGWpw=",
+"last_login": "2025-08-01T16:47:12.908Z",
+"is_superuser": false,
+"username": "ABC",
+"first_name": "",
+"last_name": "",
+"email": "",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-01T16:47:11.688Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 6,
+"fields": {
+"password": "pbkdf2_sha256$1000000$iPXyoD2ibui0ibILKkQYyn$sEiZewuEU6ulQctJCL7+o3C2+MgONAV9uSvF5LDOA3c=",
+"last_login": "2025-08-01T18:19:59.056Z",
+"is_superuser": false,
+"username": "Piyush",
+"first_name": "",
+"last_name": "",
+"email": "",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-01T18:19:57.926Z",
+"groups": [],
+"user_permissions": []
+}
+},
+{
+"model": "auth.user",
+"pk": 7,
+"fields": {
+"password": "pbkdf2_sha256$1000000$m3eylTW1IAyiYZDBBPgaMq$V7K2srqEpI42ztH103ACFq+nGYzb9GRmLcnB51axT4E=",
+"last_login": "2025-08-02T09:19:46.001Z",
+"is_superuser": false,
+"username": "somu",
+"first_name": "Dhairya",
+"last_name": "pal",
+"email": "abc@gamil.com",
+"is_staff": false,
+"is_active": true,
+"date_joined": "2025-08-02T09:19:45.437Z",
+"groups": [],
+"user_permissions": []
+}
+}
+]

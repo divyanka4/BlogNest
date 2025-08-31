@@ -52,16 +52,40 @@ INSTALLED_APPS = [
     'blog',
     # "crispy_forms",
     # "crispy_bootstrap5",  
-
-     # allauth apps
+    # allauth apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    "ckeditor" #for blog edits like italic, bold etc
 ]
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [
+            ["Bold", "Italic", "Underline"],
+            ["NumberedList", "BulletedList", "Blockquote"],
+            ["Link", "Unlink", "RemoveFormat", "Source"],
+        ],
+        "width": "100%",
+        "height": 300,
+        "removePlugins": "elementspath,exportpdf",  # Remove both status bar and PDF export
+        "resize_enabled": False,
+        "forcePasteAsPlainText": False,
+        "enterMode": 1,
+        "fillEmptyBlocks": False,
+    }
+}
+
+
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +93,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware', #for deployment
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'

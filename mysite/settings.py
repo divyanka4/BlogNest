@@ -29,10 +29,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    'blognest-vhol.onrender.com',
     '127.0.0.1',
-    'localhost'
+    'localhost',
+    '*.railway.app',  # wildcard allows for Railway's assigned domains
 ]
+
 
 
 # Application definition
@@ -92,11 +93,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        #'default': dj_database_url.config(conn_max_age=600, ssl_require=True) # This was for deployment
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}",
+        conn_max_age=600,
+        ssl_require=False
+    )
 }
 
 STATIC_URL = '/static/'
@@ -157,6 +158,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
 # SMTP 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

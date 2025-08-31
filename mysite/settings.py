@@ -31,9 +31,13 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '*.railway.app',  # wildcard allows for Railway's assigned domains
+    "web-production-2b1fef.up.railway.app",  # wildcard allows for Railway's assigned domains
 ]
 
+# CSRF (required when behind HTTPS proxies)
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-2b1fef.up.railway.app",  # exact https origin
+]
 
 
 # Application definition

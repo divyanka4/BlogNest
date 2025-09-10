@@ -95,7 +95,8 @@ CKEDITOR_5_CONFIGS = {
 }
 CKEDITOR_5_UPLOAD_PATH = "uploads/" # saved under MEDIA_ROOT/uploads .
 CKEDITOR_5_ALLOW_ALL_FILE_TYPES = False # set True if you want non-images .
-CKEDITOR_5_FILE_STORAGE = None # or set to your cloud storage backend later .
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage" # route all MEDIA to S3
+# CKEDITOR_5_FILE_STORAGE = DEFAULT_FILE_STORAGE # CKEditor uses the same storage
 
 
 MIDDLEWARE = [

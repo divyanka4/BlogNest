@@ -17,10 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('blog.urls')), 
     path('accounts/', include('allauth.urls')), # This includes all blog URLs including authentication
     path('admin/', admin.site.urls),
-      
-]
+    path("ckeditor5/", include('django_ckeditor_5.urls')),   
+    path("ckeditor5/", include("django_ckeditor_5.urls")), # upload endpoint
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load i18n %}
+{% block head_title %}{% trans "Third-Party Login Failure" %}{% endblock %}
+{% block content %}
+
+<h2>{% trans "Third-Party Login Failure" %}</h2> <p>{% trans "An error occurred while attempting to login via your third-party account." %}</p>
+{% if auth_error %}
+<pre style="white-space: pre-wrap; background: #111; color: #eee; padding: 1rem; border-radius: 6px;">
+{{ auth_error|safe }}
+</pre>
+{% endif %}
+
+{% if process %}
+<p><strong>Process:</strong> {{ process }}</p>
+{% endif %}
+{% if provider %}
+<p><strong>Provider:</strong> {{ provider.name }}</p>
+{% endif %}
+
+<p><a href="{% url 'account_login' %}">{% trans "Back to login" %}</a></p> {% endblock %}

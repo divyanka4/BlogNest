@@ -223,7 +223,7 @@
                             {% comment %} <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li> {% endcomment %}
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                            <a class="dropdown-item" href="{% url 'logout' %}">
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">
                             <i class="fas fa-sign-out-alt me-2"></i>Logout
                             </a>
                             </li>
@@ -233,7 +233,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="btn btn-outline-custom me-2" href="{% url 'login' %}">Sign In</a>
+                        <a class="btn btn-outline-custom me-2" href="{% url 'account_login' %}">Sign In</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="btn btn-primary-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -241,12 +241,12 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item" href="{% url 'login' %}">
+                                <a class="dropdown-item" href="{% url 'account_login' %}">
                                     <i class="fas fa-sign-in-alt me-2"></i>Sign In
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'signup' %}">
+                                <a class="dropdown-item" href="{% url 'account_signup' %}">
                                     <i class="fas fa-user-plus me-2"></i>Sign Up
                                 </a>
                             </li>

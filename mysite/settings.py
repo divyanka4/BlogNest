@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = 'True'
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'blog',
     # "crispy_forms",
     # "crispy_bootstrap5",  
@@ -57,30 +59,43 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    "ckeditor" #for blog edits like italic, bold etc
+    'django_ckeditor_5',#for blog edits like italic, bold etc
 ]
 
-CKEDITOR_CONFIGS = {
-    "default": {
-        "toolbar": "Custom",
-        "toolbar_Custom": [
-            ["Bold", "Italic", "Underline"],
-            ["NumberedList", "BulletedList", "Blockquote"],
-            ["Link", "Unlink", "RemoveFormat", "Source"],
+SOCIALACCOUNT_ADAPTER = 'blog.adapters.MySocialAccountAdapter'
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': {
+            'items': [
+                'heading', '|',
+                'bold', 'italic', 'underline', '|',
+                'bulletedList', 'numberedList', 'blockQuote', '|',
+                'link', 'unlink', '|', "insertImage",
+                'removeFormat', 'sourceEditing'
+            ]
+        },
+        "image": {
+        "toolbar": [
+        "imageTextAlternative",
+        "toggleImageCaption",
+        "|",
+        "imageStyle:alignLeft",
+        "imageStyle:alignCenter",
+        "imageStyle:alignRight",
+        "imageStyle:side",
         ],
-        "width": "100%",
-        "height": 300,
-        "removePlugins": "elementspath,exportpdf",  # Remove both status bar and PDF export
-        "resize_enabled": False,
-        "forcePasteAsPlainText": False,
-        "enterMode": 1,
-        "fillEmptyBlocks": False,
+        "styles": ["full", "side", "alignLeft", "alignCenter", "alignRight"],
+        },
+        'height': 300,
+        'width': '100%',
+        'removePlugins': ['Title'],
+        'placeholder': 'Start writing your blog post...'
     }
 }
-
-
-
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_5_UPLOAD_PATH = "uploads/" # saved under MEDIA_ROOT/uploads .
+CKEDITOR_5_ALLOW_ALL_FILE_TYPES = False # set True if you want non-images .
+CKEDITOR_5_FILE_STORAGE = None # or set to your cloud storage backend later .
 
 
 MIDDLEWARE = [
@@ -126,6 +141,11 @@ DATABASES = {
         ssl_require=False
     )
 }
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media" 
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #FOR DEPLOY
@@ -181,12 +201,44 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_USERNAME_REQUIRED = True
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
-ACCOUNT_LOGIN_METHODS = {'username', 'email'}
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+# Google OAuth settings
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
+
+
+ACCOUNT_LOGIN_METHODS = {'username', 'email'} 
+ACCOUNT_USERNAME_REQUIRED = True 
+ACCOUNT_EMAIL_REQUIRED = True 
+ACCOUNT_UNIQUE_EMAIL = True 
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+
+# ACCOUNT_LOGIN_METHODS = {'email'}  # Use email for login instead of username
+# ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']  # Only require email and passwords
+# ACCOUNT_EMAIL_VERIFICATION = 'none'  # Skip email verification for now
+# ACCOUNT_UNIQUE_EMAIL = True
+
+# # Social account settings
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'OAUTH_PKCE_ENABLED': True,
+        'EMAIL_AUTHENTICATION': True, # trust provider email for matching
+    }
+}
+
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+# Social account settings
+SOCIALACCOUNT_LOGIN_ON_GET = True  # Automatically log in after OAuth
+SOCIALACCOUNT_AUTO_SIGNUP = True   # Automatically create account
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'  # Skip email verification for social accounts
+
+# Optional: Store additional user info
+SOCIALACCOUNT_STORE_TOKENS = True
+
 
 # SMTP 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from django.contrib.auth import views as auth_views
+# from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Main pages
@@ -11,10 +11,10 @@ urlpatterns = [
     path('subscribe/', views.subscribe, name='subscribe'),
     path('profile/', views.profile, name='profile'),
 
-    # Authentication URLs
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # # Authentication URLs
+    # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.custom_logout, name='logout'),
-    path('accounts/signup/', views.signup_view, name='signup'),
+    # path('accounts/signup/', views.signup_view, name='signup'),
     
     # Blog post URLs 
     path('blog/post/<int:pk>/', views.post_detail, name='post_detail'),

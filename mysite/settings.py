@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-2b1fef.up.railway.app",  # exact https origin
 ]
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 
 # Application definition
